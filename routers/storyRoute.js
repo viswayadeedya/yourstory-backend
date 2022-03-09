@@ -46,7 +46,7 @@ router.get(`/`, async (req, res) => {
 });
 
 // Get one story
-router.get("story/:id", (req, res) => {
+router.get("/story/:id", (req, res) => {
   Story.findByIdAndUpdate(
     req.params.id,
     {
@@ -61,6 +61,7 @@ router.get("story/:id", (req, res) => {
       }
     })
     .catch((error) => {
+      console.log(error.message);
       res.status(404).json({ status: false, error: error.message });
     });
 });

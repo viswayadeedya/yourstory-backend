@@ -76,6 +76,7 @@ router.post("/newpart/:id", upload.single("images"), async (req, res) => {
     const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
 
     let newStoryPart = new Part({
+      userId: req.body.userId,
       title: req.body.title,
       description: req.body.description,
       images: `${basePath}${fileName}`,
@@ -110,7 +111,7 @@ router.post("/newpart/:id", upload.single("images"), async (req, res) => {
 
 // Rate part
 router.get("/rate/:id", (req, res) => {
-  Part.findByIdAndUpdate(req.params.id, { $inc: { ratings: 1 } }, { new: true })
+  Part.findByIdAndUpdate(req.params.id, { $inc: { rating: 1 } }, { new: true })
     .then((story) => {
       console.log(story);
       if (!story) {
@@ -150,6 +151,7 @@ router.put("/update/:id", upload.single("images"), (req, res) => {
     req.params.id,
     {
       $set: {
+        userId: req.body.userId,
         title: req.body.title,
         description: req.body.description,
         images: `${basePath}${fileName}`,

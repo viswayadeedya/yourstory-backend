@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const partSchema = mongoose.Schema(
   {
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     title: { type: String, required: true },
     description: { type: String, required: true },
     images: { type: String },
