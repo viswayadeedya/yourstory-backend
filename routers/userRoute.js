@@ -15,17 +15,6 @@ router.get(`/`, async (req, res) => {
   res.send(userList);
 });
 
-router.get("/get/count", async (req, res) => {
-  const userCount = await User.countDocuments((count) => count);
-  if (!userCount) {
-    res.status(500).json({
-      status: false,
-    });
-  }
-  res.json({
-    userCount,
-  });
-});
 
 router.get(`/:id`, (req, res) => {
   User.findById(req.params.id)

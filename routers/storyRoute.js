@@ -154,7 +154,7 @@ router.post("/edit/:id", upload.single("images"), (req, res) => {
   )
     .then((story) => {
       res.status(200).json({ status: true, storyId: story });
-    })
+    }) 
     .catch((err) => {
       res.status(500).json({ status: false, error: err.message });
     });
