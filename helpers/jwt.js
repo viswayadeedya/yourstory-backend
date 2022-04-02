@@ -8,6 +8,7 @@ function authJwt() {
   }).unless({
     path: [
       { url: /\/public\/uploads(.*)/, methods: ["GET", "OPTIONS"] },
+      { url: /\/api\/v1\/stories(.*)/, methods: ["GET", "OPTIONS"] },
       `/api/v1/users/login`,
       `/api/v1/users/`,
       `/api/v1/users/register`,
