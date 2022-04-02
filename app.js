@@ -11,8 +11,6 @@ require("dotenv/config");
 
 const Story = require("./models/story");
 
-const port = process.env.PORT || 3000;
-
 const api = process.env.API_URL;
 const app = express();
 
@@ -32,7 +30,7 @@ mongoose
   .connect(process.env.DATABASE_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: "yourstory-database",
+    dbName: process.env.DB_NAME,
   })
   .then(() => {
     console.log("Database connection is established");
